@@ -25,10 +25,15 @@ def split_redenvelope(total,pieces):
     while total != 0 and pieces > 0:
         if pieces == 1:
             parted_envelope = total
+        elif total == pieces:
+            parted_envelope =1
         elif pieces == 2 and total>upon_edge:
             parted_envelope = randint(point_one_total,upon_edge)
         else:
-            parted_envelope = randint(100,total//pieces)
+            if total-pieces > upon_edge:
+                parted_envelope = randint(1,upon_edge)
+            else:
+                parted_envelope = randint(1,total-pieces)
         
         total -= parted_envelope
         pieces -= 1
