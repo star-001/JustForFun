@@ -8,10 +8,16 @@ def test_splitredenvelope(total,pieces,split_redenvelope):
 def split_redenvelope(total,pieces):
     res = []
     if total > 200:
-        raise ValueError("too big")
-    if total <=0:
-        raise ValueError("too small")
-    FACTOR=100
+        raise ValueError("max money is 200")
+    if total <= 0:
+        raise ValueError("minum money is 0.01")
+    if pieces < 0:
+        raise ValueError("minum pieces is 1")
+    if pieces > 100:
+        raise ValueError("maxium pieces is 100")
+    if total/pieces < 0.01:
+        raise ValueError("per envelope money should bigger than 0.01")
+    FACTOR = 100
     total = int(total * FACTOR)
     upon_edge= int(total*0.9)
     point_one_total = int(total*0.1)
