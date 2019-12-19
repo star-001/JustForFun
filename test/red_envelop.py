@@ -1,11 +1,12 @@
 from random import randint
-def test_splitredenvelope(total,pieces,split_redenvelope):
+from typing import Callable,List
+def test_splitredenvelope(total:int,pieces:int,split_redenvelope:Callable)->None:
     res = split_redenvelope(total,pieces)
     assert len(res)==pieces
     assert sum(res)==total * 100
     assert max(res)<90*total
 
-def split_redenvelope(total,pieces):
+def split_redenvelope(total:int,pieces:int)->List:
     res = []
     if total > 200:
         raise ValueError("max money is 200")
