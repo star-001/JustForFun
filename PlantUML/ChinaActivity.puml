@@ -1,15 +1,17 @@
 @startuml
 
-package "DataSource" {
+package "DataSource" as ds{
 NTP -[#yellow]> [DataBridge]
 }
-node "Ab Initio" {
+node "Ab Initio" as AI {
+left to right direction
 [rawFile]
 () PP_ODS_LOOPING
+
 () lrr_cn_unloading
 [Enrich.dat]
+top to bottom direction
 }
-
 
 node "Utility"{
 [rule template]
@@ -21,16 +23,19 @@ database "ODS"{
 [Raw Table]
 [EnrichTable]
 [EnrichView]
+
 () EnrichViewSQL
 }
 
-[DataBridge] -[#yellow]> [rawFile]
-rawFile -[#yellow]> PP_ODS_LOOPING
+
+AI --[hidden]>ODS
+[DataBridge] --[#yellow]> [rawFile]
+rawFile -[#yellow]-> PP_ODS_LOOPING
 [EnrichView]-[#green]>lrr_cn_unloading
-PP_ODS_LOOPING -[#yellow]> [Raw Table]
-[Raw Table] -[#green]> EnrichViewSQL
-EnrichViewSQL-[#green]>[EnrichView]
-lrr_cn_unloading-[#green]> [Enrich.dat]
+PP_ODS_LOOPING -[#yellow]-> [Raw Table]
+[Raw Table] -[#green]-> EnrichViewSQL
+EnrichViewSQL-[#green]->[EnrichView]
+lrr_cn_unloading-[#green]-> [Enrich.dat]
 lrr_cn_unloading-[#cyan]> [EnrichTable]
 [rule template] -> lrr_rule_set
 
