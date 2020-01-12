@@ -1,0 +1,38 @@
+@startuml
+
+package "DataSource" {
+NTP -[#yellow]> [DataBridge]
+}
+node "Ab Initio" {
+[rawFile]
+() PP_ODS_LOOPING
+() lrr_cn_unloading
+[Enrich.dat]
+}
+
+
+node "Utility"{
+[rule template]
+}
+database "RDM"{
+[lrr_rule_set]
+}
+database "ODS"{
+[Raw Table]
+[EnrichTable]
+[EnrichView]
+() EnrichViewSQL
+}
+
+[DataBridge] -[#yellow]> [rawFile]
+rawFile -[#yellow]> PP_ODS_LOOPING
+[EnrichView]-[#green]>lrr_cn_unloading
+PP_ODS_LOOPING -[#yellow]> [Raw Table]
+[Raw Table] -[#green]> EnrichViewSQL
+EnrichViewSQL-[#green]>[EnrichView]
+lrr_cn_unloading-[#green]> [Enrich.dat]
+lrr_cn_unloading-[#cyan]> [EnrichTable]
+[rule template] -> lrr_rule_set
+
+
+@enduml
