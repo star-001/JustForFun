@@ -1,1 +1,7 @@
 .ip*
+*/.settings/*
+*.class
+.classpath
+.project
+basic/recurse/Basic.java
+.vscode/launch.json
