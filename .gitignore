@@ -5,3 +5,8 @@
 .project
 basic/recurse/Basic.java
 .vscode/launch.json
+GuiceTest/src/test/java/org/example/AppTest.java
+JMSTest/target/classes/jms/activemq/mydemo/MessagePublisher.class
+JMSTest/target/classes/jms/activemq/mydemo/MessageSubscriber.class
+JMSTest/target/classes/jms/activemq/mydemo/MyJMSDemo.class
+JMSTest/target/classes/jms/activemq/mydemo/TextListener.class
