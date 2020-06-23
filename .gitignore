@@ -10,3 +10,8 @@ JMSTest/target/classes/jms/activemq/mydemo/MessagePublisher.class
 JMSTest/target/classes/jms/activemq/mydemo/MessageSubscriber.class
 JMSTest/target/classes/jms/activemq/mydemo/MyJMSDemo.class
 JMSTest/target/classes/jms/activemq/mydemo/TextListener.class
+
+.vscode/settings.json
+imgs/jvm.drawio.png
+imgs/jvm.png
+imgs/~$jvm.drawio.png.bkp
